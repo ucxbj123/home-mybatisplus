@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mybatisplus.mapper.CompanyMapper">
+    <!-- List<Company> getpartCompany(@Param("start") int start,@Param("end") int end );-->
+    <select id="getpartCompany" resultType="company">
+        select * from com
+        <if test="start !=null and end !=null">
+            limit #{start},#{end}
+        </if>
+    </select>
+
+</mapper>
