@@ -12,3 +12,6 @@ spring:
 mybatis-plus:
     mapper-locations: classpath:com/atguigu/mybatisplus/mapper/*.xml
     type-aliases-package: com.atguigu.mybatisplus.pojo
+    #配置mybatis-plus日志
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
