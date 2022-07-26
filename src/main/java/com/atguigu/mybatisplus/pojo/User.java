@@ -1,6 +1,7 @@
 package com.atguigu.mybatisplus.pojo;
 
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.*;
 
 //@NoArgsConstructor
@@ -10,7 +11,7 @@ import lombok.*;
 //@EqualsAndHashCode
 @Data
 public class User {
-
+//    @TableId
     private Long id;
 
     private String name;

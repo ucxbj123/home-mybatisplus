@@ -15,3 +15,4 @@ mybatis-plus:
     #配置mybatis-plus日志
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      interceptors:

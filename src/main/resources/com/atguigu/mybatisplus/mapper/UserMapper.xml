@@ -8,4 +8,9 @@
         select * from user order by id desc
     </select>
 
+    <!-- Map<String,Object> selectMapById(Long id);-->
+    <select id="selectMapById" resultType="map">
+        select * from user where id=#{id}
+    </select>
+
 </mapper>
