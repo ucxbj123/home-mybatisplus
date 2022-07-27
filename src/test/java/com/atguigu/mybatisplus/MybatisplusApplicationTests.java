@@ -46,7 +46,7 @@ class MybatisplusApplicationTests {
 
 		for(String bean:beans){
 
-			if(bean.contains("sqlSession")){
+			if(bean.contains("Mapper")){
 				System.out.println(bean);
 			}
 

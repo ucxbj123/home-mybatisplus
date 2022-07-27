@@ -1,12 +1,15 @@
 package com.atguigu.mybatisplus.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
+
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.stereotype.Repository;
 
 @TableName("com")
+@Repository
 public class Company {
-    @TableField(value = "`Rank`")
+    @TableId(value = "`Rank`",type= IdType.AUTO)
     private  Integer Rank;
 
     private  String Name;

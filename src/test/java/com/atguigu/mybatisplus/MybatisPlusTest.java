@@ -40,7 +40,7 @@ public class MybatisPlusTest {
     @Test
     public void testBaseMapperCompany(){
 //        companyMapper.getpartCompany(0,10).forEach(System.out::println);
-        companyMapper.selectList(null).forEach(System.out::println);
+//        companyMapper.selectList(null).forEach(System.out::println);
 
     }
 
