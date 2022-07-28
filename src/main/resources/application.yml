@@ -19,6 +19,9 @@ mybatis-plus:
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+swagger:
+  enable: true
+
 #整合mybatis
 #mybatis:
 #  mapper-locations: classpath:com/atguigu/mybatisplus/mapper/*.xml

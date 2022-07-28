@@ -1,6 +1,10 @@
 package com.atguigu.mybatisplus.config;
 
 
+
+import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
+import com.google.common.base.Predicates;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -14,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@EnableSwaggerBootstrapUI
 public class SwaggerConfig {
 
         /**
@@ -24,32 +29,38 @@ public class SwaggerConfig {
          *
          * @return
          */
+        @Value("${swagger.enable}")
+        private boolean enable;
+
         @Bean
         public Docket restApi() {
             return new Docket(DocumentationType.SWAGGER_2)
                     .groupName("标准接口")
+                    //绑定swagger-ui的展示内容
+                    .enable(enable)
                     .apiInfo(apiInfo("Spring Boot中使用Swagger2构建RESTful APIs", "1.0"))
-                    .useDefaultResponseMessages(true)
-                    .forCodeGeneration(false)
                     .select()
-                    .apis(RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus.controller"))
+                    //绑定扫描的类
+                    //原：RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus")
+                    //Predicates.not(RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus"))
+                    .apis(RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus"))
                     .paths(PathSelectors.any())
                     .build();
         }
 
         /**
          * 创建该API的基本信息（这些基本信息会展现在文档页面中）
-         * 2.x访问地址：http://ip:port/swagger-ui.html
+         * 2.x访问地址：http://ip:port/swagger-ui.html http://localhost:8080/swagger-ui.html
          * 3.x访问地址：http://ip:port/swagger-ui/index.html
          *
          * @return
          */
+        //指定swagger2 ui显示的格式
         private ApiInfo apiInfo(String title, String version) {
             return new ApiInfoBuilder()
                     .title(title)
-                    .description("更多请关注: https://blog.csdn.net/xqnode")
+                    .description("swagger和springboot整合演示! swagger的API文档演示效果 ")
                     .termsOfServiceUrl("https://blog.csdn.net/xqnode")
-                    .contact(new Contact("xqnode", "https://blog.csdn.net/xqnode", "xiaqingweb@163.com"))
                     .version(version)
                     .build();
         }

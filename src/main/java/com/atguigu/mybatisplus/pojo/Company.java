@@ -4,14 +4,18 @@ package com.atguigu.mybatisplus.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.stereotype.Repository;
 
 @TableName("com")
 @Repository
+@ApiModel(description = "公司对象")
 public class Company {
     @TableId(value = "`Rank`",type= IdType.AUTO)
     private  Integer Rank;
 
+    @ApiModelProperty(name = "公司名称")
     private  String Name;
 
     private  String Symbol;
