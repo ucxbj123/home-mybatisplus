@@ -3,7 +3,6 @@ package com.atguigu.mybatisplus.config;
 
 
 import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
-import com.google.common.base.Predicates;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +43,14 @@ public class SwaggerConfig {
                     //原：RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus")
                     //Predicates.not(RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus"))
                     .apis(RequestHandlerSelectors.basePackage("com.atguigu.mybatisplus"))
-                    .paths(PathSelectors.any())
+                    /**
+                     * PathSelectors方法说明:
+                     * any()  任何请求都扫描
+                     * none()  任何请求都不扫描
+                     * regex(final String pathRegex)  通过正则表达式控制
+                     * ant(final String antPattern)  通过ant()控制
+                     */
+                    .paths(PathSelectors.ant("/user/**"))
                     .build();
         }
 
@@ -52,6 +58,7 @@ public class SwaggerConfig {
          * 创建该API的基本信息（这些基本信息会展现在文档页面中）
          * 2.x访问地址：http://ip:port/swagger-ui.html http://localhost:8080/swagger-ui.html
          * 3.x访问地址：http://ip:port/swagger-ui/index.html
+         * 导入swagger-bootstrap-ui的访问路径： http://ip:port/doc.html
          *
          * @return
          */
@@ -64,6 +71,7 @@ public class SwaggerConfig {
                     .version(version)
                     .build();
         }
+
 
 
 }

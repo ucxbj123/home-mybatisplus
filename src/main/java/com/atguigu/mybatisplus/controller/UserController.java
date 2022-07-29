@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -42,18 +43,23 @@ public class UserController {
      * b> 通过注解将@ApiResponse的response=User.class将实体类包括或者通过@ApiOperation的response=User.class同样也可以
      *
      */
-    @ApiOperation(value = "接收json数据",notes = "传id进行查询",response = User.class)
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 200,message = "用户信息",response=User.class)
-//    })
-    @RequestMapping(value = "ById",method = RequestMethod.POST)
-    public Object getUserBatchyIds(@ApiParam(name = "接收数据",defaultValue = "{}") @RequestBody String ids){
-        List<Map> maps= JSON.parseArray(ids,Map.class);
-        List<Long> longList=new ArrayList<>();
-        for (Map<String,Long> map:maps){
-            longList.add(map.get("id"));
-        }
-        List<User> list=userMapper.selectBatchIds(longList);
+    @ApiOperation(value = "接收请求体的json数据",notes = "批量查询用户信息",response = User.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200,message = "用户信息",response=User.class)
+    })
+    @RequestMapping(value = "ByBatchId",method = RequestMethod.POST)
+    public Object getUserBatchyIds(@ApiParam(name = "ID(工号)",defaultValue = "[1,2,3]",value = "通过ID批量查询用户信息",
+                                    example = "[id1,id2,id3]",required = true)
+                                       @RequestBody ArrayList<Long> ids){
+//        List<Map> maps= JSON.parseArray(ids,Map.class);
+//        List<Long> longList=new ArrayList<>();
+//        for (Map<String,Long> map:maps){
+//            longList.add(map.get("id"));
+//        }
+        System.out.println("ids"+ids);
+//        List<Long> longList=new ArrayList(Arrays.asList(ids));
+//        longList.forEach(System.out::println);
+        List<User> list=userMapper.selectBatchIds(ids);
         JSONArray jsonArray=JSON.parseArray(JSON.toJSONString(list));
         return jsonArray;
     }
