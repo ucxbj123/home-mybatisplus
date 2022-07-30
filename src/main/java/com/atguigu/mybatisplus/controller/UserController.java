@@ -43,14 +43,20 @@ public class UserController {
      * b> 通过注解将@ApiResponse的response=User.class将实体类包括或者通过@ApiOperation的response=User.class同样也可以
      *
      */
+
+    /**
+     * @ApiParam(name = "ID(工号)",defaultValue = "[1,2,3]",value = "通过ID批量查询用户信息",
+     *                                     example = "[id1,id2,id3]",required = true)
+     * @return
+     */
     @ApiOperation(value = "接收请求体的json数据",notes = "批量查询用户信息",response = User.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200,message = "用户信息",response=User.class)
     })
+    @ApiImplicitParam(name = "ID列表(工号)",value = "通过ID批量查询用户信息",required = true,
+            dataType = "Array",paramType = "body")
     @RequestMapping(value = "ByBatchId",method = RequestMethod.POST)
-    public Object getUserBatchyIds(@ApiParam(name = "ID(工号)",defaultValue = "[1,2,3]",value = "通过ID批量查询用户信息",
-                                    example = "[id1,id2,id3]",required = true)
-                                       @RequestBody ArrayList<Long> ids){
+    public Object getUserBatchyIds(@RequestBody ArrayList<Long> ids){
 //        List<Map> maps= JSON.parseArray(ids,Map.class);
 //        List<Long> longList=new ArrayList<>();
 //        for (Map<String,Long> map:maps){
