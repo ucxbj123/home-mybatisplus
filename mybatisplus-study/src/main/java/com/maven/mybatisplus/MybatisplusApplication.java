@@ -1,4 +1,4 @@
-package com.atguigu.mybatisplus;
+package com.maven.mybatisplus;
 
 
 
@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //用于扫描mapper接口所在的包
-@MapperScan("com.atguigu.mybatisplus.mapper")
+@MapperScan("com.maven.mybatisplus.mapper")
 public class MybatisplusApplication {
 
 	public static void main(String[] args) {

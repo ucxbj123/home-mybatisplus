@@ -1,6 +1,6 @@
-package com.atguigu.mybatisplus.mapper;
+package com.maven.mybatisplus.mapper;
 
-import com.atguigu.mybatisplus.pojo.User;
+import com.maven.mybatisplus.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

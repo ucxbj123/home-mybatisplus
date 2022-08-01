@@ -10,8 +10,8 @@ spring:
     password: 1234
 #整合mybatis
 mybatis-plus:
-    mapper-locations: classpath:com/atguigu/mybatisplus/mapper/*.xml
-    type-aliases-package: com.atguigu.mybatisplus.pojo
+    mapper-locations: classpath:com/maven/mybatisplus/mapper/*.xml
+    type-aliases-package: com.maven.mybatisplus.pojo
     #配置mybatis-plus日志
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

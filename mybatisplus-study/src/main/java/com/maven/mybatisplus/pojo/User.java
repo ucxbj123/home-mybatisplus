@@ -1,4 +1,4 @@
-package com.atguigu.mybatisplus.pojo;
+package com.maven.mybatisplus.pojo;
 
 
 import com.baomidou.mybatisplus.annotation.TableId;

@@ -1,8 +1,6 @@
-package com.atguigu.mybatisplus;
+package com.maven.mybatisplus;
 
-import com.atguigu.mybatisplus.mapper.UserMapper;
-import com.atguigu.mybatisplus.pojo.User;
-import org.apache.ibatis.session.SqlSession;
+import com.maven.mybatisplus.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-import java.util.List;
 
 @SpringBootTest
 class MybatisplusApplicationTests {
@@ -46,8 +40,8 @@ class MybatisplusApplicationTests {
 
 		for(String bean:beans){
 
-			if(bean.contains("sqlSession")){
-				System.out.println(bean);
+			if(bean.contains("Service")){
+				System.out.println("bean:"+bean);
 			}
 
 		}
